@@ -1,12 +1,12 @@
 package at.tugraz.ist.soma;
 
 
+import at.tugraz.ist.soma.cfg.CFGNode;
+import at.tugraz.ist.soma.statements.Statement;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-
-import at.tugraz.ist.soma.cfg.CFGNode;
-import at.tugraz.ist.soma.statements.Statement;
 
 /**
  * This class holds a list of all statements, the information about the file name, the slicing criterion
@@ -127,5 +127,12 @@ public class DataPool {
 	public void printStatements(){
 		statements.forEach((k,v) -> System.out.print(v.toString()));
 	}
-	
+
+	public void prepareOutputFolder() {
+		File outputFolder = new File(this.getOutputFileName()).getParentFile();
+		if (!outputFolder.exists()) {
+			outputFolder.mkdir();
+		}
+
+	}
 }

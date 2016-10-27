@@ -56,7 +56,10 @@ public class Visualizer {
 		
 		String file = pool.getOutputFileName();
 		File outputFile = new File(file.replace(".java", "-cfg.dot"));
-		FileWriter fw;
+
+		pool.prepareOutputFolder();
+
+		FileWriter fw = null;
 		try {
 			fw = new FileWriter(outputFile);
 			fw.write(cfgString +  "}" );
@@ -64,6 +67,14 @@ public class Visualizer {
 			fw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			if (fw != null)
+				try {
+					fw.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
 		}
 	}
 	
