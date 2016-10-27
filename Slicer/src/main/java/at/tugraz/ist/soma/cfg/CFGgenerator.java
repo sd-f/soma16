@@ -37,7 +37,7 @@ public class CFGgenerator {
 		//		hint: this will be the most difficult part of this exercise.
 		//		Prepare a coffee supply...
 		for(Statement stmt : pool.getStatements().values()){
-			
+			System.out.println(stmt);
 		}
 
 		Visualizer.createCFGdotFile(cfg);
